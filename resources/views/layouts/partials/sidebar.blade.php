@@ -62,6 +62,11 @@
                             <a href="{{ Route('kategori.index') }}" class="submenu-link">Kategori</a>
                         </li>
                     </ul>
+
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-door-open-fill"></i>
+                        <span>Logout</span>
+                    </a>
                 </li>
             </ul>
         </div>

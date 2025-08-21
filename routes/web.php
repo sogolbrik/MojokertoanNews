@@ -3,11 +3,17 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\KategoriController;
+use App\Models\Category;
+use App\Models\News;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
 
+//Berita
 Route::get('/', function () {
-    return view('page-berita.landingPage');
+    return view('page-berita.landingPage', [
+        'berita'   => News::all(),
+        'kategori' => Category::all(),
+    ]);
 })->name('home');
 
 //Auth

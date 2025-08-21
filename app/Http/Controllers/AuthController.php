@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,7 +33,10 @@ class AuthController extends Controller
     public function dashboard()
     {
         if (Auth::check()) {
-            return view('admin.dashboard');
+            return view('admin.dashboard', [
+                'kategori' => Category::get(),
+                'berita'   => News::get(),
+            ]);
         }
 
         return redirect()->route('login')->with('error-message', 'Anda harus login terlebih dahulu.');

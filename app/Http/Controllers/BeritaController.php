@@ -37,9 +37,24 @@ class BeritaController extends Controller
             'judul'       => 'required',
             'id_category' => 'required',
             'konten'      => 'required',
-            'waktu'       => 'required|date',
             'gambar'      => 'image|file|max:2048'
         ]);
+
+        $validation['waktu'] = now();
+
+        if ($request->hasFile("gambar")) {
+
+            $file = $request->file("gambar");
+
+            $file_name = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/berita/'), $file_name);
+
+            $validation["gambar"] = $file_name;
+        }
+
+        News::create($validation);
+
+        return redirect()->route('berita.index')->with('success-message', 'Berita berhasil ditambahkan');
     }
 
     /**
@@ -55,7 +70,10 @@ class BeritaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.berita.form-edit', [
+            'berita'   => News::findOrFail($id),
+            'kategori' => Category::get(),
+        ]);
     }
 
     /**
@@ -63,7 +81,33 @@ class BeritaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validation = $request->validate([
+            'judul'       => 'required',
+            'id_category' => 'required',
+            'konten'      => 'required',
+            'gambar'      => 'image|file|max:2048'
+        ]);
+
+        $berita = News::findOrFail($id);
+
+        if ($request->hasFile("gambar")) {
+
+            $file_path = public_path("uploads/berita/" . $berita->gambar);
+            if (file_exists($file_path)) {
+                unlink($file_path);
+            }
+
+            $file = $request->file("gambar");
+
+            $file_name = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/berita/'), $file_name);
+
+            $validation["gambar"] = $file_name;
+        }
+
+        News::findOrFail($id)->update($validation);
+
+        return redirect()->route('berita.index')->with('success-message', 'Berita berhasil diedit');
     }
 
     /**
@@ -71,6 +115,16 @@ class BeritaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $berita = News::find($id);
+
+        $file_path = public_path("uploads/berita/" . $berita->picture);
+
+        if (file_exists($file_path)) {
+            unlink($file_path);
+        }
+
+        $berita->delete();
+
+        return redirect()->route('berita.index')->with('success-message', 'Berita berhasil dihapus');
     }
 }

@@ -40,9 +40,6 @@
                                             <th>No</th>
                                             <th>Judul</th>
                                             <th>Kategori</th>
-                                            <th>Konten</th>
-                                            <th>Waktu</th>
-                                            {{-- <th>gambar</th> --}}
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -51,17 +48,17 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $item->judul }}</td>
-                                                <td>{{ coba }}</td>
-                                                <td>{{ $item->konten }}</td>
-                                                <td>{{ $item->waktu }}</td>
-                                                {{-- <td>{{ $item->gambar }}</td> --}}
-                                                <td>
+                                                <td>{{ $item->kategori->nama ?? '-' }}</td>
+                                                <td style="width: 30%">
                                                     <form action="{{ Route('berita.destroy', $item->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
 
                                                         <a href="{{ Route('berita.edit', $item->id) }}" class="btn btn-warning">Ubah</a>
                                                         <button class="btn btn-danger">Hapus</button>
+                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detail{{ $item->id }}">
+                                                            Detail
+                                                        </button>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -75,5 +72,28 @@
             </div>
         </div>
     </section>
+
+    @foreach ($berita as $item)
+        <div class="modal fade" id="detail{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Detail</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Waktu: {{ $item->waktu }}</p>
+                        <p>Konten: {{ $item->konten }}</p>
+
+                        <p>Gambar:</p>
+                        <img src="{{ asset('uploads/berita/' . $item->gambar) }}" alt="{{ $item->gambar }}" class="img-fluid">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 
 @endsection
