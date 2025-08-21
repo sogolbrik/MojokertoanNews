@@ -41,28 +41,30 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item active">
+                <li class="sidebar-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                     <a href="{{ Route('dashboard') }}" class="sidebar-link">
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item has-sub">
+                <li class="sidebar-item has-sub {{ request()->routeIs('kategori.*') || request()->routeIs('berita.*') ? 'active' : '' }}">
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-stack"></i>
                         <span>Menu</span>
                     </a>
 
                     <ul class="submenu">
-                        <li class="submenu-item">
+                        <li class="submenu-item {{ request()->routeIs('berita.*') ? 'active' : '' }}">
                             <a href="{{ Route('berita.index') }}" class="submenu-link">Berita</a>
                         </li>
-                        <li class="submenu-item">
+                        <li class="submenu-item {{ request()->routeIs('kategori.*') ? 'active' : '' }}">
                             <a href="{{ Route('kategori.index') }}" class="submenu-link">Kategori</a>
                         </li>
                     </ul>
 
+                </li>
+                <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-door-open-fill"></i>
                         <span>Logout</span>
