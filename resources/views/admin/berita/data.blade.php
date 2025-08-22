@@ -82,11 +82,13 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <div class="d-flex flex-column align-items-center mb-2">
+                            <p>Gambar:</p>
+                            <img src="{{ asset('uploads/berita/' . $item->gambar) }}" alt="{{ $item->gambar }}" class="img-fluid" style="width: 50%">
+                        </div>
                         <p>Waktu: {{ $item->waktu }}</p>
                         <p>Konten: {{ $item->konten }}</p>
 
-                        <p>Gambar:</p>
-                        <img src="{{ asset('uploads/berita/' . $item->gambar) }}" alt="{{ $item->gambar }}" class="img-fluid">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -12,4 +12,8 @@ class News extends Model
     {
         return $this->belongsTo(Category::class, 'id_category');
     }
+
+    protected $casts = [
+        'waktu' => 'datetime',
+    ];
 }
