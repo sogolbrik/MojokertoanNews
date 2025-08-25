@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Route;
 
 //Berita
 Route::get('/', [MojokertoanController::class, 'landingPage'])->name('landingPage');
-Route::get('page-kategori', [MojokertoanController::class, 'kategori'])->name('page-kategori');
+Route::get('trending/{id}', [MojokertoanController::class, 'trending'])->name('trending');
+Route::get('byKategori/{slug}', [MojokertoanController::class, 'byKategori'])->name('byKategori');
+Route::get('allBerita', [MojokertoanController::class, 'allBerita'])->name('allBerita');
 
 //Auth
 Route::get('login', [AuthController::class, 'login'])->name('login');

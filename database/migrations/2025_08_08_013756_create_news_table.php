@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('judul', 100);
             $table->text('konten');
             $table->dateTime('waktu');
-            $table->string('gambar');
+            $table->string('gambar')->nullable();
+            $table->unsignedBigInteger('views')->default(0);
             $table->timestamps();
         });
     }

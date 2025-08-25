@@ -18,13 +18,35 @@ class MojokertoanController extends Controller
         ]);
     }
 
-    public function kategori()
+    // public function trending($id)
+    // {
+    //     $berita = News::with('kategori')->findOrFail($id);
+
+    //     // Tambah views setiap kali berita dibuka
+    //     $berita->increment('views');
+
+    //     return view('page-berita.landingPage', [
+    //         'trending' => $berita
+    //     ]);
+    // }
+
+    public function byKategori($slug)
     {
-        return view('page-berita.kategori', [
-            'title'         => 'Mojokertoan',
-            'heroBerita'    => News::latest()->take(1)->get(),
-            'berita'        => News::latest()->get(),
-            'kategori'      => Category::all(),
+        $kategori = Category::where('slug', $slug)->firstOrFail();
+        $berita = $kategori->berita()->latest()->paginate(6);
+
+        return view('page-berita.byKategori', [
+            'berita'   => $berita,
+            'kategori' => $kategori,
+        ]);
+    }
+
+    public function allBerita()
+    {
+        $berita = News::with('kategori')->latest()->paginate(9);
+
+        return view('page-berita.allBerita', [
+            'berita' => $berita,
         ]);
     }
 }

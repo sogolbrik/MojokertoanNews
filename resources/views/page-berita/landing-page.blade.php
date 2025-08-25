@@ -78,10 +78,6 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         }
 
-        .footer-custom {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-        }
-
         .search-input {
             border-radius: 25px;
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -114,45 +110,9 @@
 <body>
 
     <!-- Header -->
-    <header class="bg-primary-custom text-white shadow-lg">
-        <div class="container py-3">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <h1 class="h3 mb-0 fw-bold">Mojokertoan News</h1>
-                </div>
-                <div class="col-md-6 d-none d-md-block">
-                    <nav class="d-flex justify-content-center gap-3">
-                        <button class="btn btn-link text-white text-decoration-none category-nav px-3 py-2" data-category="all">Semua</button>
-                        <button class="btn btn-link text-white text-decoration-none category-nav px-3 py-2" data-category="Politik">Politik</button>
-                        <button class="btn btn-link text-white text-decoration-none category-nav px-3 py-2" data-category="Teknologi">Teknologi</button>
-                        <button class="btn btn-link text-white text-decoration-none category-nav px-3 py-2" data-category="Kesehatan">Kesehatan</button>
-                        <button class="btn btn-link text-white text-decoration-none category-nav px-3 py-2" data-category="Ekonomi">Ekonomi</button>
-                    </nav>
-                </div>
-                <div class="col-md-3">
-                    <input type="text" class="form-control search-input" placeholder="Cari berita..." id="searchInput">
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Mobile Navigation -->
-    <div class="d-md-none bg-light py-2">
-        <div class="container">
-            <div class="d-flex flex-wrap gap-2" id="mobileCategories">
-                <button class="btn btn-outline-primary btn-sm category-nav-mobile active" data-category="all">Semua</button>
-                <button class="btn btn-outline-primary btn-sm category-nav-mobile" data-category="Politik">Politik</button>
-                <button class="btn btn-outline-primary btn-sm category-nav-mobile" data-category="Teknologi">Teknologi</button>
-                <button class="btn btn-outline-primary btn-sm category-nav-mobile" data-category="Olahraga">Olahraga</button>
-                <button class="btn btn-outline-primary btn-sm category-nav-mobile" data-category="Kesehatan">Kesehatan</button>
-                <button class="btn btn-outline-primary btn-sm category-nav-mobile" data-category="Ekonomi">Ekonomi</button>
-                <button class="btn btn-outline-primary btn-sm category-nav-mobile" data-category="Lingkungan">Lingkungan</button>
-            </div>
-        </div>
-    </div>
+    @include('layouts.partials.navbar-berita')
 
     <!-- Hero Section -->
-
     @foreach ($heroBerita as $item)
         <section class="hero-section py-5">
             <div class="container">
@@ -169,14 +129,16 @@
                         <a href="#" class="btn-read-more">Baca Selengkapnya</a>
                     </div>
                     <div class="col-lg-6">
-                        <img src="{{ asset('uploads/berita/' . $item->gambar) }}" alt="{{ $item->gambar }}" class="img-fluid rounded shadow-lg">
+                        @if ($item->gambar == null)
+                            <img src="{{ asset('dummy/monarch-butterfly.png') }}" alt="No Image" class="img-fluid rounded shadow-lg">
+                        @else
+                            <img src="{{ asset('uploads/berita/' . $item->gambar) }}" alt="{{ $item->gambar }}" class="img-fluid rounded shadow-lg">
+                        @endif
                     </div>
                 </div>
             </div>
         </section>
     @endforeach
-
-    
 
     <!-- News Grid -->
     <section class="py-5">
@@ -190,7 +152,11 @@
                 @foreach ($beritaTerbaru as $item)
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card news-card h-100">
-                            <img src="{{ asset('uploads/berita/' . $item->gambar) }}" class="card-img-top" alt="{{ $item->gambar }}" style="height: 200px; object-fit: cover;">
+                            @if ($item->gambar == null)
+                                <img src="{{ asset('dummy/monarch-butterfly.png') }}" alt="No Image" class="card-img-top" style="height: 200px; object-fit: cover;">
+                            @else
+                                <img src="{{ asset('uploads/berita/' . $item->gambar) }}" class="card-img-top" alt="{{ $item->gambar }}" style="height: 200px; object-fit: cover;">
+                            @endif
                             <div class="card-body d-flex flex-column">
                                 <span class="category-badge mb-2">{{ $item->kategori->nama }}</span>
                                 <h5 class="card-title">{{ $item->judul }}</h5>
@@ -212,130 +178,41 @@
     </section>
 
     <!-- Trending Sidebar -->
-    <section class="bg-light py-5">
+    {{-- <section class="bg-light py-5">
         <div class="container">
             <h3 class="h4 fw-bold mb-4">Berita Trending</h3>
             <div class="row">
                 <div class="col-lg-8">
                     <div id="trendingNews">
-                        <div class="trending-item">
-                            <div class="row align-items-center">
-                                <div class="col-3">
-                                    <img src="${news.image}" alt="${news.title}" class="img-fluid rounded" style="height: 60px; object-fit: cover;">
-                                </div>
-                                <div class="col-9">
-                                    <h6 class="mb-1">${news.title}</h6>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <small class="text-muted">${news.category}</small>
-                                        <small class="text-muted">•</small>
-                                        <span class="time-badge">${getTimeAgo(news.uploadTime)}</span>
+                        @foreach ($trending as $item)
+                            <div class="trending-item">
+                                <div class="row align-items-center">
+                                    <div class="col-3">
+                                        @if ($item->gambar == null)
+                                            <img src="{{ asset('dummy/monarch-butterfly.png') }}" alt="No Image" class="img-fluid rounded" style="height: 60px; object-fit: cover;">
+                                        @else
+                                            <img src="{{ asset('uploads/berita/' . $item->gambar) }}" alt="{{ $item->gambar }}" class="img-fluid rounded" style="height: 60px; object-fit: cover;">
+                                        @endif
+                                    </div>
+                                    <div class="col-9">
+                                        <h6 class="mb-1">${news.title}</h6>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <small class="text-muted">${news.category}</small>
+                                            <small class="text-muted">•</small>
+                                            <span class="time-badge">${getTimeAgo(news.uploadTime)}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- Footer -->
-    <footer class="footer-custom text-white py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 mb-4">
-                    <h5 class="fw-bold mb-3">Mojokertoan News</h5>
-                    <p class="small opacity-75">Portal berita terpercaya yang menyajikan informasi terkini dan akurat
-                        untuk masyarakat Mojokerto dan Indonesia.</p>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <h6 class="fw-semibold mb-3">Kategori</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white-50 text-decoration-none small">Politik</a></li>
-                        <li><a href="#" class="text-white-50 text-decoration-none small">Teknologi</a></li>
-                        <li><a href="#" class="text-white-50 text-decoration-none small">Olahraga</a></li>
-                        <li><a href="#" class="text-white-50 text-decoration-none small">Kesehatan</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <h6 class="fw-semibold mb-3">Tentang</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white-50 text-decoration-none small">Tentang Kami</a></li>
-                        <li><a href="#" class="text-white-50 text-decoration-none small">Kontak</a></li>
-                        <li><a href="#" class="text-white-50 text-decoration-none small">Kebijakan Privasi</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <h6 class="fw-semibold mb-3">Ikuti Kami</h6>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="text-white-50">Facebook</a>
-                        <a href="#" class="text-white-50">Twitter</a>
-                        <a href="#" class="text-white-50">Instagram</a>
-                    </div>
-                </div>
-            </div>
-            <hr class="border-white-50">
-            <div class="text-center">
-                <p class="small mb-0">&copy; 2024 Mojokertoan News. Semua hak dilindungi.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // News data
-
-        let currentCategory = 'all';
-        let searchTerm = '';
-
-        // Time formatting functions
-        function getTimeAgo(date) {
-            const now = new Date();
-            const diffInMinutes = Math.floor((now.getTime() - date.getTime()) / (1000 * 60));
-
-            if (diffInMinutes < 60) {
-                return `${diffInMinutes} menit yang lalu`;
-            } else if (diffInMinutes < 1440) {
-                const hours = Math.floor(diffInMinutes / 60);
-                return `${hours} jam yang lalu`;
-            } else {
-                const days = Math.floor(diffInMinutes / 1440);
-                return `${days} hari yang lalu`;
-            }
-        }
-
-        // Category navigation
-        document.querySelectorAll('.category-nav, .category-nav-mobile').forEach(button => {
-            button.addEventListener('click', function() {
-                currentCategory = this.dataset.category;
-
-                // Update active states
-                document.querySelectorAll('.category-nav, .category-nav-mobile').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                document.querySelectorAll(`[data-category="${currentCategory}"]`).forEach(btn => {
-                    btn.classList.add('active');
-                });
-
-                displayNews();
-            });
-        });
-
-        // Search functionality
-        document.getElementById('searchInput').addEventListener('input', function() {
-            searchTerm = this.value;
-            displayNews();
-        });
-
-        // Initialize
-        displayNews();
-        displayTrendingNews();
-
-        // Update time every minute
-        setInterval(() => {
-            displayNews();
-            displayTrendingNews();
-        }, 60000);
-    </script>
+    @include('layouts.partials.footer-berita')
 
     <script src="{{ asset('vendor/getbootstrap/bootstrap.js') }}"></script>
     <script src="{{ asset('vendor/fontawesome/all.min.js') }}"></script>

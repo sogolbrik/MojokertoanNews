@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 
@@ -21,5 +22,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Carbon::setLocale('id'); // set ke bahasa Indonesia
+
+        view()->composer('*', function ($view) {
+            $view->with('navKategori', Category::all());
+        });
     }
 }

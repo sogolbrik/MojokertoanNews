@@ -16,4 +16,9 @@ class News extends Model
     protected $casts = [
         'waktu' => 'datetime',
     ];
+
+    // public function scopeTrending($query, $limit = 5)
+    // {
+    //     return $query->orderBy('views', 'desc')->take($limit);
+    // }
 }
