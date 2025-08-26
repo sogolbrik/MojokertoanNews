@@ -18,17 +18,6 @@ class MojokertoanController extends Controller
         ]);
     }
 
-    // public function trending($id)
-    // {
-    //     $berita = News::with('kategori')->findOrFail($id);
-
-    //     // Tambah views setiap kali berita dibuka
-    //     $berita->increment('views');
-
-    //     return view('page-berita.landingPage', [
-    //         'trending' => $berita
-    //     ]);
-    // }
 
     public function byKategori($slug)
     {
@@ -49,4 +38,28 @@ class MojokertoanController extends Controller
             'berita' => $berita,
         ]);
     }
+
+    public function detailBerita($id)
+    {
+        $berita = News::with('kategori')->findOrFail($id);
+
+        return view('page-berita.detailBerita', [
+            'berita'  => News::with('kategori')->findOrFail($id),
+            'terkait' => News::where('id_category', $berita->id_category)
+                ->where('id', '!=', $berita->id)
+                ->latest()->take(3)->get(),
+        ]);
+    }
+
+    // public function trending($id)
+    // {
+    //     $berita = News::with('kategori')->findOrFail($id);
+
+    //     // Tambah views setiap kali berita dibuka
+    //     $berita->increment('views');
+
+    //     return view('page-berita.landingPage', [
+    //         'trending' => $berita
+    //     ]);
+    // }
 }

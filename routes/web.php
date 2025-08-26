@@ -11,6 +11,7 @@ Route::get('/', [MojokertoanController::class, 'landingPage'])->name('landingPag
 Route::get('trending/{id}', [MojokertoanController::class, 'trending'])->name('trending');
 Route::get('byKategori/{slug}', [MojokertoanController::class, 'byKategori'])->name('byKategori');
 Route::get('allBerita', [MojokertoanController::class, 'allBerita'])->name('allBerita');
+Route::get('detailBerita/{id}', [MojokertoanController::class, 'detailBerita'])->name('detailBerita');
 
 //Auth
 Route::get('login', [AuthController::class, 'login'])->name('login');

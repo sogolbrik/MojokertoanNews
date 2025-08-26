@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_category');
-            $table->string('judul', 100);
+            $table->string('judul');
             $table->text('konten');
             $table->dateTime('waktu');
             $table->string('gambar')->nullable();

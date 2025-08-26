@@ -11,18 +11,6 @@
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome/all.min.css') }}">
 
     <style>
-        /* Custom CSS untuk mempercantik tampilan */
-        .bg-primary-custom {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
-        }
-
-        .category-nav:hover {
-            background-color: rgba(255, 255, 255, 0.1) !important;
-            border-radius: 6px;
-            transform: translateY(-1px);
-            transition: all 0.3s ease;
-        }
-
         .news-card {
             transition: all 0.3s ease;
             border: none;
@@ -78,25 +66,6 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         }
 
-        .search-input {
-            border-radius: 25px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            padding: 8px 20px;
-        }
-
-        .search-input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .search-input:focus {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
-            color: white;
-        }
-
         .time-badge {
             background: rgba(59, 130, 246, 0.1);
             color: #3b82f6;
@@ -126,7 +95,7 @@
                             <small class="text-muted">•</small>
                             <span class="time-badge">{{ $item->waktu->diffForHumans() }}</span>
                         </div>
-                        <a href="#" class="btn-read-more">Baca Selengkapnya</a>
+                        <a href="{{ Route('detailBerita', $item->id) }}" class="btn-read-more">Baca Selengkapnya</a>
                     </div>
                     <div class="col-lg-6">
                         @if ($item->gambar == null)
@@ -168,7 +137,7 @@
                                 <div class="mb-2">
                                     <small class="text-muted">Diperbarui: {{ $item->updated_at->diffForHumans() }}</small>
                                 </div>
-                                <a href="#" class="btn-read-more text-center">Baca Selengkapnya</a>
+                                <a href="{{ Route('detailBerita', $item->id) }}" class="btn-read-more text-center">Baca Selengkapnya</a>
                             </div>
                         </div>
                     </div>

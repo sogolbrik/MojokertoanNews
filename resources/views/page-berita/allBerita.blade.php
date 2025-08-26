@@ -174,7 +174,7 @@
                                         <i class="fa fa-pencil me-1"></i>Diperbarui: {{ $item->updated_at->diffForHumans() }}
                                     </small>
                                 </div>
-                                <a href="#" class="btn-read-more text-center">
+                                <a href="{{ Route('detailBerita', $item->id) }}" class="btn-read-more text-center">
                                     <i class="fa fa-arrow-right me-1"></i>Baca Selengkapnya
                                 </a>
                             </div>

@@ -1,3 +1,64 @@
+<style>
+    .bg-primary-custom {
+        background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+    }
+
+    .search-input {
+        border-radius: 25px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        padding: 8px 20px;
+    }
+
+    .search-input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .search-input:focus {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+        color: white;
+    }
+
+    /* .category-nav:hover {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        border-radius: 6px;
+        transform: translateY(-1px);
+        transition: all 0.3s ease;
+    } */
+
+    .category-nav {
+        padding: 12px 20px;
+        border-radius: 12px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .category-nav:hover {
+        background: rgba(255, 255, 255, 0.15) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px var(--shadow-light);
+    }
+
+    .category-nav::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+    }
+
+    .category-nav:hover::before {
+        left: 100%;
+    }
+</style>
+
 <header class="bg-primary-custom text-white shadow-lg">
     <div class="container py-3">
         <div class="row align-items-center">
@@ -10,12 +71,6 @@
                     @foreach ($navKategori->take(4) as $item)
                         <a href="{{ Route('byKategori', $item->slug) }}" class="btn btn-link text-white text-decoration-none category-nav px-3 py-2">{{ $item->nama }}</a>
                     @endforeach
-
-                    {{-- <button class="btn btn-link text-white text-decoration-none category-nav px-3 py-2" data-category="all">Semua</button>
-                    <button class="btn btn-link text-white text-decoration-none category-nav px-3 py-2" data-category="Politik">Politik</button>
-                    <button class="btn btn-link text-white text-decoration-none category-nav px-3 py-2" data-category="Teknologi">Teknologi</button>
-                    <button class="btn btn-link text-white text-decoration-none category-nav px-3 py-2" data-category="Kesehatan">Kesehatan</button>
-                    <button class="btn btn-link text-white text-decoration-none category-nav px-3 py-2" data-category="Ekonomi">Ekonomi</button> --}}
                 </nav>
             </div>
             <div class="col-md-3">
