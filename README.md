@@ -71,7 +71,6 @@ cd mojokertoan-news
 
 # Install dependencies
 composer install
-npm install
 
 # Setup environment
 cp .env.example .env
@@ -80,9 +79,6 @@ php artisan key:generate
 # Database setup
 php artisan migrate
 php artisan db:seed
-
-# Build assets
-npm run build
 
 # Start development server
 php artisan serve
@@ -95,15 +91,9 @@ php artisan serve
 php artisan serve
 \`\`\`
 
-### Build untuk Production
-\`\`\`bash
-npm run production
-php artisan optimize
-\`\`\`
-
 ### Database Seeding
 \`\`\`bash
-php artisan db:seed --class=BeritaSeeder
+php artisan db:seed
 \`\`\`
 
 ## 📸 Screenshots
@@ -120,30 +110,6 @@ php artisan db:seed --class=BeritaSeeder
 *Hover effects dan animasi yang smooth untuk UX yang memukau*
 
 </div>
-
-## 🏗️ Struktur Project
-
-\`\`\`
-mojokertoan-news/
-├── app/
-│   ├── Http/Controllers/
-│   │   └── BeritaController.php
-│   └── Models/
-│       └── Berita.php
-├── resources/
-│   ├── views/
-│   │   └── berita/
-│   │       └── index.blade.php
-│   ├── css/
-│   └── js/
-├── public/
-│   ├── css/
-│   ├── js/
-│   └── images/
-└── database/
-    ├── migrations/
-    └── seeders/
-\`\`\`
 
 ## 🎨 Design System
 
@@ -185,7 +151,7 @@ Project ini dilisensikan under [MIT License](LICENSE) - lihat file LICENSE untuk
 
 <div align="center">
 
-**Dibuat dengan ❤️ untuk masyarakat Mojokerto**
+**Dibuat dengan ❤️ oleh GlgDev/sogolbrik untuk masyarakat Mojokerto**
 
 ---
 
