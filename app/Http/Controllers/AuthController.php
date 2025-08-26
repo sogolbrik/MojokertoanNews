@@ -41,4 +41,9 @@ class AuthController extends Controller
 
         return redirect()->route('login')->with('error-message', 'Anda harus login terlebih dahulu.');
     }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login')->with('success-message', 'Anda berhasil logout.');
+    }
 }

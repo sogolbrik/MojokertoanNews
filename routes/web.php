@@ -4,9 +4,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\MojokertoanController;
-use App\Models\Category;
-use App\Models\News;
-use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
 
 //Berita
@@ -18,6 +15,7 @@ Route::get('allBerita', [MojokertoanController::class, 'allBerita'])->name('allB
 //Auth
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('proseslogin', [AuthController::class, 'authentication'])->name('authentication');
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 //Manajemen
 Route::middleware(['auth'])->group(function () {

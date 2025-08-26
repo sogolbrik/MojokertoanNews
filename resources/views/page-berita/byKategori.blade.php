@@ -130,8 +130,15 @@
                         <i class="fa-regular fa-newspaper tech-icon"></i>
                         <div>
                             <h2 class="h3 fw-bold mb-1">Berita {{ $kategori->nama }}</h2>
-                            <p class="text-muted mb-0">Informasi terkini seputar perkembangan teknologi, inovasi, dan
-                                digital</p>
+                            @if ($kategori->nama == 'Teknologi')
+                                <p class="text-muted mb-0">Temukan berita terbaru seputar inovasi dan perkembangan teknologi terkini.</p>
+                            @elseif ($kategori->nama == 'Politik')
+                                <p class="text-muted mb-0">Dapatkan informasi terbaru mengenai perkembangan politik dan kebijakan terkini.</p>
+                            @elseif ($kategori->nama == 'Kesehatan')
+                                <p class="text-muted mb-0">Ikuti berita terbaru tentang kesehatan dan tips hidup sehat.</p>
+                            @elseif ($kategori->nama == 'Ekonomi')
+                                <p class="text-muted mb-0">Update terkini mengenai ekonomi dan pasar finansial.</p>
+                            @endif
                         </div>
                     </div>
                 </div>

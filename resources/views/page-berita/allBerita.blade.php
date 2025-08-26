@@ -130,8 +130,8 @@
                         <i class="fa-regular fa-newspaper tech-icon"></i>
                         <div>
                             <h2 class="h3 fw-bold mb-1">Semua Berita</h2>
-                            <p class="text-muted mb-0">Informasi terkini seputar perkembangan teknologi, inovasi, dan
-                                digital</p>
+                            <p class="text-muted mb-0">Menampilkan semua berita terbaru dan terpopuler dari berbagai kategori. Temukan informasi terkini dan baca artikel menarik yang telah kami
+                                siapkan untuk Anda.</p>
                         </div>
                     </div>
                 </div>
