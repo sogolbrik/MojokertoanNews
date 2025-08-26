@@ -59,8 +59,7 @@
 ### Prerequisites
 - PHP >= 8.2
 - Composer
-- Node.js & NPM
-- MySQL/PostgreSQL
+- MySQL
 
 ### Langkah Instalasi
 
