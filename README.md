@@ -1,61 +1,167 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div align="center">
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# 📰 MojokertoanNews
 
-## About Laravel
+### *Portal Berita Modern untuk Masyarakat Mojokerto*
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![CSS3](https://img.shields.io/badge/CSS3-Modern-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+*Menghadirkan informasi terkini dengan desain modern dan user experience yang memukau*
 
-## Learning Laravel
+</div>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## ✨ Tentang Project
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+**MojokertoanNews** adalah platform berita digital yang dirancang khusus untuk menyajikan informasi terkini dengan tampilan yang modern, responsif, dan user-friendly. Dibangun menggunakan teknologi web terdepan untuk memberikan pengalaman membaca yang optimal di semua perangkat.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🚀 Fitur Unggulan
 
-## Laravel Sponsors
+### 📱 **Responsive Design**
+- Layout yang sempurna di desktop, tablet, dan mobile
+- Grid system yang adaptif dengan CSS Grid modern
+- Optimasi tampilan untuk berbagai ukuran layar
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 🎨 **Modern UI/UX**
+- Desain minimalis dengan skema warna biru tua yang elegan
+- Efek hover dan animasi yang smooth
+- Glass morphism effects untuk tampilan premium
+- Typography yang mudah dibaca dan hierarki visual yang jelas
 
-### Premium Partners
+### ⚡ **Performance Optimized**
+- Pure JavaScript tanpa dependency tambahan
+- CSS custom properties untuk konsistensi styling
+- Lazy loading untuk gambar berita
+- Optimasi kecepatan loading halaman
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 🔧 **Developer Friendly**
+- Clean code architecture
+- Blade templating yang terstruktur
+- Bootstrap 5 integration
+- Mudah dikustomisasi dan dikembangkan
 
-## Contributing
+## 🛠️ Tech Stack
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **Laravel** | 12.x | Backend Framework |
+| **Bootstrap** | 5.3 | CSS Framework |
+| **JavaScript** | ES6+ | Frontend Interactivity |
+| **CSS3** | Modern | Custom Styling |
+| **Blade** | Latest | Templating Engine |
 
-## Code of Conduct
+## 📦 Instalasi
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Prerequisites
+- PHP >= 8.2
+- Composer
+- MySQL
 
-## Security Vulnerabilities
+### Langkah Instalasi
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+\`\`\`bash
+# Clone repository
+git clone https://github.com/username/mojokertoan-news.git
+cd mojokertoan-news
 
-## License
+# Install dependencies
+composer install
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Setup environment
+cp .env.example .env
+php artisan key:generate
+
+# Database setup
+php artisan migrate
+php artisan db:seed
+
+# Start development server
+php artisan serve
+\`\`\`
+
+## 🎯 Penggunaan
+
+### Menjalankan Development Server
+\`\`\`bash
+php artisan serve
+\`\`\`
+
+### Database Seeding
+\`\`\`bash
+php artisan db:seed
+\`\`\`
+
+## 📸 Screenshots
+
+<div align="center">
+
+### 🖥️ Desktop View
+*Tampilan desktop dengan grid layout yang rapi dan modern*
+
+### 📱 Mobile View  
+*Responsive design yang optimal untuk perangkat mobile*
+
+### 🎨 Interactive Elements
+*Hover effects dan animasi yang smooth untuk UX yang memukau*
+
+</div>
+
+## 🎨 Design System
+
+### Color Palette
+- **Primary**: `#1e3a8a` (Dark Blue)
+- **Secondary**: `#3b82f6` (Blue)
+- **Accent**: `#60a5fa` (Light Blue)
+- **Neutral**: `#f8fafc` (Light Gray)
+- **Text**: `#1f2937` (Dark Gray)
+
+### Typography
+- **Headings**: System font stack dengan fallback yang optimal
+- **Body**: Readable font dengan line-height yang nyaman
+- **Hierarchy**: Konsisten dengan skala yang proporsional
+
+## 🤝 Contributing
+
+Kami menyambut kontribusi dari developer lain! Silakan ikuti langkah berikut:
+
+1. Fork repository ini
+2. Buat branch fitur (`git checkout -b feature/AmazingFeature`)
+3. Commit perubahan (`git commit -m 'Add some AmazingFeature'`)
+4. Push ke branch (`git push origin feature/AmazingFeature`)
+5. Buat Pull Request
+
+## 📋 Roadmap
+
+- [ ] **v2.0** - Sistem komentar dan rating
+- [ ] **v2.1** - Integrasi social media sharing
+- [ ] **v2.2** - Dark mode toggle
+- [ ] **v2.3** - Progressive Web App (PWA)
+- [ ] **v2.4** - Multi-language support
+
+## 📄 License
+
+Project ini dilisensikan under [MIT License](LICENSE) - lihat file LICENSE untuk detail lengkap.
+
+## 👥 Tim Pengembang
+
+<div align="center">
+
+**Dibuat dengan ❤️ oleh GlgDev/sogolbrik untuk masyarakat Mojokerto**
+
+---
+
+### 📞 Kontak & Support
+
+📧 Email: support@mojokertoan-news.com  
+🌐 Website: [mojokertoan-news.com](https://mojokertoan-news.com)  
+📱 Social Media: [@mojokertoan_news](https://instagram.com/mojokertoan_news)
+
+---
+
+*⭐ Jangan lupa berikan star jika project ini bermanfaat!*
+
+</div>
