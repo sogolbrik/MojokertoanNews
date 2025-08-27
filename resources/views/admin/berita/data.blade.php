@@ -336,7 +336,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title" id="detailModalLabel{{ $item->id }}">
+                        <h1 class="modal-title text-white" id="detailModalLabel{{ $item->id }}">
                             <i class="bi bi-newspaper me-2"></i>Detail Berita
                         </h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

@@ -18,6 +18,17 @@ class MojokertoanController extends Controller
         ]);
     }
 
+    public function cariBerita(Request  $request)
+    {
+        $query = $request->input('search'); // Ambil input pencarian
+        $berita = News::where('judul', 'like', '%' . $query . '%')
+            ->paginate(10); // Sesuaikan jumlah per halaman
+
+        return view('page-berita.pencarian-berita', [
+            'berita' => $berita,
+            'query'  => $query,
+        ]);
+    }
 
     public function byKategori($slug)
     {

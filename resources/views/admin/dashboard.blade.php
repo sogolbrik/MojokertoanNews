@@ -13,12 +13,6 @@
             --text-muted: #6b7280;
         }
 
-        .modern-dashboard {
-            background: linear-gradient(135deg, var(--light-gray) 0%, #e2e8f0 100%);
-            min-height: 100vh;
-            padding: 2rem 0;
-        }
-
         .page-header {
             background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
             color: var(--white);
@@ -190,89 +184,87 @@
         }
     </style>
 
-    <div class="modern-dashboard">
-        <!-- Enhanced Header -->
-        <div class="page-header">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-8">
-                        <h3 class="animate-fade-in text-white">Dashboard</h3>
-                        <p class="subtitle animate-fade-in animate-delay-1">Selamat datang di panel kontrol admin</p>
+    <!-- Enhanced Header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-8">
+                    <h3 class="animate-fade-in text-white">Dashboard</h3>
+                    <p class="subtitle animate-fade-in animate-delay-1">Selamat datang di panel kontrol admin</p>
+                </div>
+                <div class="col-12 col-md-4">
+                    <nav aria-label="breadcrumb" class="float-start float-md-end">
+                        <ol class="breadcrumb animate-fade-in animate-delay-2">
+                            <li class="breadcrumb-item">
+                                <a href="{{ Route('dashboard') }}">
+                                    <i class="fas fa-home me-1"></i>Dashboard
+                                </a>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Welcome Section -->
+        <div class="welcome-section animate-fade-in">
+            <h4 class="welcome-title">
+                <i class="fas fa-chart-line me-2"></i>Ringkasan Statistik
+            </h4>
+            <p class="welcome-text">
+                Berikut adalah ringkasan data terkini dari sistem manajemen konten Anda.
+                Monitor perkembangan kategori dan berita dengan mudah melalui dashboard ini.
+            </p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="stats-card animate-fade-in animate-delay-1" onclick="animateCard(this)">
+                    <div class="stats-icon kategori">
+                        <i class="fas fa-tags"></i>
                     </div>
-                    <div class="col-12 col-md-4">
-                        <nav aria-label="breadcrumb" class="float-start float-md-end">
-                            <ol class="breadcrumb animate-fade-in animate-delay-2">
-                                <li class="breadcrumb-item">
-                                    <a href="{{ Route('dashboard') }}">
-                                        <i class="fas fa-home me-1"></i>Dashboard
-                                    </a>
-                                </li>
-                            </ol>
-                        </nav>
+                    <div class="stats-label">Total Kategori</div>
+                    <div class="stats-number" id="kategori-count">{{ $kategori->count() }}</div>
+                    <div class="stats-trend">
+                        <i class="fas fa-arrow-up me-1"></i>Kategori Aktif
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="stats-card animate-fade-in animate-delay-2" onclick="animateCard(this)">
+                    <div class="stats-icon berita">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <div class="stats-label">Total Berita</div>
+                    <div class="stats-number" id="berita-count">{{ $berita->count() }}</div>
+                    <div class="stats-trend">
+                        <i class="fas fa-arrow-up me-1"></i>Artikel Terpublikasi
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="container">
-            <!-- Welcome Section -->
-            <div class="welcome-section animate-fade-in">
-                <h4 class="welcome-title">
-                    <i class="fas fa-chart-line me-2"></i>Ringkasan Statistik
-                </h4>
-                <p class="welcome-text">
-                    Berikut adalah ringkasan data terkini dari sistem manajemen konten Anda.
-                    Monitor perkembangan kategori dan berita dengan mudah melalui dashboard ini.
-                </p>
-            </div>
-
-            <!-- Stats Cards -->
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-12">
-                    <div class="stats-card animate-fade-in animate-delay-1" onclick="animateCard(this)">
-                        <div class="stats-icon kategori">
-                            <i class="fas fa-tags"></i>
+        <!-- Additional Info Section -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="stats-card animate-fade-in animate-delay-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="mb-2" style="color: var(--primary-blue); font-weight: 700;">
+                                <i class="fas fa-info-circle me-2"></i>Informasi Sistem
+                            </h5>
+                            <p class="mb-0" style="color: var(--text-muted);">
+                                Dashboard ini menampilkan data real-time dari sistem manajemen konten.
+                                Data diperbarui secara otomatis setiap kali ada perubahan.
+                            </p>
                         </div>
-                        <div class="stats-label">Total Kategori</div>
-                        <div class="stats-number" id="kategori-count">{{ $kategori->count() }}</div>
-                        <div class="stats-trend">
-                            <i class="fas fa-arrow-up me-1"></i>Kategori Aktif
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 col-md-6 col-12">
-                    <div class="stats-card animate-fade-in animate-delay-2" onclick="animateCard(this)">
-                        <div class="stats-icon berita">
-                            <i class="fas fa-newspaper"></i>
-                        </div>
-                        <div class="stats-label">Total Berita</div>
-                        <div class="stats-number" id="berita-count">{{ $berita->count() }}</div>
-                        <div class="stats-trend">
-                            <i class="fas fa-arrow-up me-1"></i>Artikel Terpublikasi
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Additional Info Section -->
-            <div class="row mt-4">
-                <div class="col-12">
-                    <div class="stats-card animate-fade-in animate-delay-3">
-                        <div class="row align-items-center">
-                            <div class="col-md-8">
-                                <h5 class="mb-2" style="color: var(--primary-blue); font-weight: 700;">
-                                    <i class="fas fa-info-circle me-2"></i>Informasi Sistem
-                                </h5>
-                                <p class="mb-0" style="color: var(--text-muted);">
-                                    Dashboard ini menampilkan data real-time dari sistem manajemen konten.
-                                    Data diperbarui secara otomatis setiap kali ada perubahan.
-                                </p>
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <div class="stats-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%); margin: 0 auto;">
-                                    <i class="fas fa-cog"></i>
-                                </div>
+                        <div class="col-md-4 text-center">
+                            <div class="stats-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%); margin: 0 auto;">
+                                <i class="fas fa-cog"></i>
                             </div>
                         </div>
                     </div>

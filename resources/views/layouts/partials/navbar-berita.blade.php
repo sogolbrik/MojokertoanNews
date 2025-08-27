@@ -3,12 +3,19 @@
         background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
     }
 
+    .search-container {
+        position: relative;
+        width: 100%;
+    }
+
     .search-input {
         border-radius: 25px;
         border: 2px solid rgba(255, 255, 255, 0.3);
         background: rgba(255, 255, 255, 0.1);
         color: white;
-        padding: 8px 20px;
+        padding: 8px 50px 8px 20px;
+        /* Added right padding for button space */
+        width: 100%;
     }
 
     .search-input::placeholder {
@@ -20,14 +27,37 @@
         border-color: rgba(255, 255, 255, 0.5);
         box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
         color: white;
+        outline: none;
     }
 
-    /* .category-nav:hover {
-        background-color: rgba(255, 255, 255, 0.1) !important;
-        border-radius: 6px;
-        transform: translateY(-1px);
+    .search-btn {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        color: rgba(255, 255, 255, 0.8);
+        padding: 5px 10px;
+        border-radius: 20px;
         transition: all 0.3s ease;
-    } */
+        cursor: pointer;
+    }
+
+    .search-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+    }
+
+    .search-btn:focus {
+        outline: none;
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Icon styling */
+    .search-btn i {
+        font-size: 14px;
+    }
 
     .category-nav {
         padding: 12px 20px;
@@ -74,7 +104,14 @@
                 </nav>
             </div>
             <div class="col-md-3">
-                <input type="text" class="form-control search-input" placeholder="Cari berita..." id="searchInput">
+                <form action="{{ Route('cariBerita') }}" method="GET">
+                    <div class="search-container">
+                        <input type="text" name="search" class="form-control search-input" placeholder="Cari berita..." id="searchInput">
+                        <button class="search-btn" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

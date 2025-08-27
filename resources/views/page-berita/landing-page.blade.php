@@ -88,7 +88,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <span class="category-badge">{{ $item->kategori->nama }}</span>
-                        <h2 class="display-5 fw-bold mt-3 mb-4">{{ $item->judul }}</h2>
+                        <h2 class="display-5 fw-bold mt-3 mb-4">{{ Str::limit($item->judul, 60) }}</h2>
                         <p class="lead text-muted mb-4">{{ Str::limit($item->konten, 335) }}</p>
                         <div class="d-flex align-items-center gap-3 mb-4">
                             <small class="text-muted">Oleh: Gilang Sampurno</small>

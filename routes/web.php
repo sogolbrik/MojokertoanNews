@@ -12,6 +12,7 @@ Route::get('trending/{id}', [MojokertoanController::class, 'trending'])->name('t
 Route::get('byKategori/{slug}', [MojokertoanController::class, 'byKategori'])->name('byKategori');
 Route::get('allBerita', [MojokertoanController::class, 'allBerita'])->name('allBerita');
 Route::get('detailBerita/{id}', [MojokertoanController::class, 'detailBerita'])->name('detailBerita');
+Route::get('cari-berita', [MojokertoanController::class, 'cariBerita'])->name('cariBerita');
 
 //Auth
 Route::get('login', [AuthController::class, 'login'])->name('login');
