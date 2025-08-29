@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\KomenController;
 use App\Http\Controllers\MojokertoanController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,9 @@ Route::get('byKategori/{slug}', [MojokertoanController::class, 'byKategori'])->n
 Route::get('allBerita', [MojokertoanController::class, 'allBerita'])->name('allBerita');
 Route::get('detailBerita/{id}', [MojokertoanController::class, 'detailBerita'])->name('detailBerita');
 Route::get('cari-berita', [MojokertoanController::class, 'cariBerita'])->name('cariBerita');
+
+//Komen
+Route::post('komen', [KomenController::class, 'create'])->name('komen');
 
 //Auth
 Route::get('login', [AuthController::class, 'login'])->name('login');

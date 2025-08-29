@@ -117,7 +117,7 @@ class BeritaController extends Controller
     {
         $berita = News::find($id);
 
-        $file_path = public_path("uploads/berita/" . $berita->picture);
+        $file_path = public_path("uploads/berita/" . $berita->gambar);
 
         if (file_exists($file_path)) {
             unlink($file_path);

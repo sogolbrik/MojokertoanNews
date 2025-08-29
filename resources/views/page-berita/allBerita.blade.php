@@ -187,6 +187,7 @@
                         <p class="text-muted">Coba gunakan kata kunci yang berbeda</p>
                     </div>
                 @endforelse
+                {{ $berita->links() }}
             </div>
         </div>
     </section>

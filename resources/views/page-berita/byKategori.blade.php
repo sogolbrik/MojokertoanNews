@@ -122,7 +122,6 @@
     <section class="py-5">
         <div class="container">
             <div class="row" id="newsGrid">
-                {{-- Isi --}}
                 @forelse ($berita as $item)
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card news-card h-100">
@@ -163,6 +162,7 @@
                         <p class="text-muted">Coba gunakan kata kunci yang berbeda</p>
                     </div>
                 @endforelse
+                {{ $berita->links() }}
             </div>
         </div>
     </section>

@@ -13,6 +13,10 @@ class News extends Model
         return $this->belongsTo(Category::class, 'id_category');
     }
 
+    public function komen () {
+        return $this->hasMany(Comment::class, 'id_berita');
+    }
+
     protected $casts = [
         'waktu' => 'datetime',
     ];

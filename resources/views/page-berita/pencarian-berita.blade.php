@@ -371,6 +371,7 @@
                         </div>
                     @endforeach
                 @endif
+                {{ $berita->links() }}
             </div>
         </div>
     </section>

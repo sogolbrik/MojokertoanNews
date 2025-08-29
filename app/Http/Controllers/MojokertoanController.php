@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\News;
 use Illuminate\Http\Request;
 
 class MojokertoanController extends Controller
 {
+
     public function landingPage()
     {
         return view('page-berita.landing-page', [
@@ -52,13 +54,14 @@ class MojokertoanController extends Controller
 
     public function detailBerita($id)
     {
-        $berita = News::with('kategori')->findOrFail($id);
+        $berita = News::with('kategori', 'komen')->findOrFail($id);
 
         return view('page-berita.detailBerita', [
-            'berita'  => News::with('kategori')->findOrFail($id),
+            'berita'  => $berita,
             'terkait' => News::where('id_category', $berita->id_category)
                 ->where('id', '!=', $berita->id)
                 ->latest()->take(3)->get(),
+            'komen'   => $berita->komen()->latest()->get(),
         ]);
     }
 

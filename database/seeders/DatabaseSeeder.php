@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\News;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -176,6 +177,12 @@ Dalam kasus ini, KPK telah menetapkan 3 dari 9 orang yang terjaring OTT pada Rab
 Dari OTT, KPK mengamankan sejumlah barang bukti, yakni uang tunai sebesar 189 ribu Dolar Singapura atau sekitar Rp2,4 miliar, uang tunai Rp8,5 juta, 1 unit mobil Rubicon dari rumah Dicky, serta 1 unit mobil Pajero milik Dicky dari rumah Aditya',
             'waktu' => now(),
             'gambar' => "dummy6.jpg",
+        ]);
+
+        Comment::create([
+            'id_berita' => 1,
+            'nama'      => 'Lempeng',
+            'komen'     => 'Saya sangat setuju dengan berita ini. Penting untuk terus meningkatkan kualitas pelayanan publik.',
         ]);
     }
 }
