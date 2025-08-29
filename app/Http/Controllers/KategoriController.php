@@ -13,7 +13,7 @@ class KategoriController extends Controller
     public function index()
     {
         return view('admin.kategori.data', [
-            'kategori' => Category::get()
+            'kategori' => Category::latest()->get()
         ]);
     }
 
@@ -33,6 +33,8 @@ class KategoriController extends Controller
         $validation = $request->validate([
             'nama' => 'required'
         ]);
+
+        $validation['slug'] = $request->nama;
 
         Category::create($validation);
 
@@ -65,6 +67,7 @@ class KategoriController extends Controller
         $validation = $request->validate([
             'nama' => 'required'
         ]);
+        $validation['slug'] = $request->nama;
 
         Category::findOrFail($id)->update($validation);
 
